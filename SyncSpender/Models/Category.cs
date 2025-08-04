@@ -1,0 +1,19 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SyncSpender.Models
+{
+    public class Category
+    {
+        [Key]
+        public int CategoryId { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string Title { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string? Icon { get; set; } = "";
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string Type { get; set; } = "Expense";
+    }
+}
