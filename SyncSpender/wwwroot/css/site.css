@@ -29,6 +29,25 @@ body {
 .e-bigger {
     font-size: medium;
 }
+/*BreadCrumb*/
+.e-breadcrumb a, .e-breadcrumb .e-hover {
+    text-decoration: none !important;
+    color: inherit;
+    !important;
+    box-shadow:none;
+    outline:none !important;
+}
+/*Button*/
+.btn:focus, .btn:active{
+    outline:none !important;
+    box-shadow:none;
+    
+}
+/*HyperLink*/
+.no-a-decoration, .no-a-decoration:hover{
+    text-decoration:none;
+    color:white;
+}
 /*Grid*/
 .e-grid {
     border: 0 ;
