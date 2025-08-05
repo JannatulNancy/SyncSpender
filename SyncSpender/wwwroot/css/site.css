@@ -25,9 +25,35 @@ body {
 .e-bigger {
     font-size: medium;
 }
+/*Radio button Group*/
+.e-btn-group.custom-rbt-group {
+    width: 100%;
+   
+}
+.e-btn-group.custom-rbt-group .e-btn {
+    flex:1;
+    text-align:center;
+}
+.custom-rbt-group label.e-btn{
+    box-shadow:none !important;
+    border:1px solid #0094ff;
+    background-color:#12161d;
+    color:white;
+}
+.e-btn-group.custom-rbt-group input:checked+label.e-btn {
+    background-color: #0094ff;
+    color:#000000;
+    border: 1px solid #258cfb;
+}
+/*Widget*/
+.widget {
+    
+    border-radius: 2rem;
+    background-color:#1a222b;
+}
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
+  color: #808080;
   text-align: end;
 }
 

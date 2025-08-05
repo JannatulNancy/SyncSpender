@@ -1,0 +1,52 @@
+﻿@model SyncSpender.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class=" widget p-5" >
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden"  name="CategoryId" value="@Model.CategoryId" />
+
+                <!-- Type Selection -->
+                <div class="mb-3">
+
+                    <div class="e-btn-group custom-rbt-group w-200 ">
+                        <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type == "Expense")" />
+                        <label class="e-btn" for="radioleft">Expense</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="Income" checked="@(Model.Type == "Income")" />
+                        <label class="e-btn" for="radiomiddle">Income</label>
+                    </div>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+
+                <!-- Title Input -->
+                <div class="mb-3">
+                    <ejs-textbox id="title" placeholder="Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Icon Input -->
+                <div class="md-3">
+                    <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <br />
+                <!-- Submit Button -->
+                <div class="mb-3">
+                    <ejs-button id="submit" cssClass="e-outline" content="Submit"></ejs-button>
+                </div>
+            </form>
+        </div>
+      
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
