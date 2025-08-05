@@ -13,8 +13,12 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-family: "Libertinus Serif", serif;
+}
+*:not(.fa-solid):not(.fa):not(.e-icons) {
+    font-family: "Libertinus Serif", serif;
 }
 
 body {
@@ -25,6 +29,26 @@ body {
 .e-bigger {
     font-size: medium;
 }
+/*Grid*/
+.e-grid {
+    border: 0 ;
+    border-radius:5px;
+}
+    .e-grid .e-headercell {
+        color: #ffffff;
+        background-color: #1a222b;
+    }
+    .e.grid e.gridheader{
+        border:5px;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+        padding:10px;
+        background-color:darkgray;
+    }
+    .e-grid e.gridcontent, .e-grid .e-table{
+        background-color: #12161d;
+        
+    }
 /*Radio button Group*/
 .e-btn-group.custom-rbt-group {
     width: 100%;
