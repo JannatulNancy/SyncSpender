@@ -4,54 +4,43 @@
     ViewData["PageTitle"] = "Transactions";
     Layout = "_Layout";
     ViewData["PageActionText"] = "Add New Transaction";
-    ViewData["PageActionUrl"] = Url.Action("AddOrEdit", "Transcation");
+    ViewData["PageActionUrl"] = Url.Action("AddOrEdit", "Transaction");
 }
+<div class="row">
+    <div class=" col-md-13  align-items-center">
+        <ejs-grid id="transactions" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Title" field="Title" width="220px" textAlign="Left" ></e-grid-column>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field ="Date" width="100px" type="Date" format ="MM-dd-yy" textAlign ="Left" ></e-grid-column>
+                <e-grid-column headerText="Amount" field="FormattedAmount" width="100px" textAlign="Center" ></e-grid-column>
+                <e-grid-column headerText="Note" field="Note" width="200px" textAlign="Center"></e-grid-column>
+               <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="120px"></e-grid-column>
+            </e-grid-columns>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Note)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TransactionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </ejs-grid>
+        <div class="col-md-5">
+            <div class="widget h-100 d-flex justify-center align-items-center" style="background-color:#212b36">
+                <i class="fa-solid fa-shapes fa-2xl"></i>
+            </div>
+        </div>
+    </div>
+    </div>
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+       <a class="btn btn-sm .no-a-decoration" href="/Transaction/AddOrEdit/${TransactionId}">
+
+       <i class="bi bi-pencil" style="color:lightsteelblue"></i>
+            </a>
+           <form action="/Transaction/Delete/${TransactionId}" method="post">
+              @Html.AntiForgeryToken()
+               <button type="submit" class="btn btn-sm .no-a-decoration"
+                  onclick="return confirm (&quot;Are you sure to delete this record?&quot)">
+                   <i class="bi bi-trash" style="color:orangered"></i>
+              </button>
+              </form>
+            </div>
+
+</script>
