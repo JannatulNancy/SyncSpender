@@ -1,0 +1,62 @@
+﻿@model SyncSpender.Models.Transaction
+
+@{
+    ViewData["PageTitle"] = Model.TransactionId == 0 ? "Create a New Transaction" : "Edit Transaction";
+}
+
+<!-- SyncSpender/Views/Transaction/AddOrEdit.cshtml -->
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="widget p-3" style="background-color:darkgray">
+            <form asp-action="AddOrEdit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-2">
+                    <ejs-datepicker id="date" ejs-for="Date" placeholder="Date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox id="title" placeholder="Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId" dataSource=" @ViewBag.Categories"
+                    placeholder="Category" floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                    filterType="Contains" popupHeight="250px">
+                        <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"> </e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                </div>
+
+                <div class="mb-2">
+                    <ejs-numerictextbox id="Amount" ejs-for="Amount" 
+                    placeholder="Amount" floatLabelType="Always" min="0"
+                    format="C0" currency="BDT" locale="bn-BD"></ejs-numerictextbox>
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+
+               
+
+                <div class="mb-2">
+                    <ejs-textbox id="note" placeholder="Note" ejs-for="Note" floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+
+               
+                <br />
+                <div class="mb-2">
+                    <ejs-button id="submit" cssClass="e-secodary" content="Submit"></ejs-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
