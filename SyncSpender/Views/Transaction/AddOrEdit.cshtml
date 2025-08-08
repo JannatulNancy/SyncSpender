@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-8">
-        <div class="widget p-3" style="background-color:darkgray">
+        <div class="widget col-lg-9 style="background-color:darkslateblue">
             <form asp-action="AddOrEdit" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="TransactionId" value="@Model.TransactionId" />
@@ -48,12 +48,13 @@
                
                 <br />
                 <div class="mb-2">
-                    <ejs-button id="submit" cssClass="e-secodary" content="Submit"></ejs-button>
+                    <ejs-button id="submit" cssClass="e-secondary" style="color:#7886C7" content="Submit"></ejs-button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     @{

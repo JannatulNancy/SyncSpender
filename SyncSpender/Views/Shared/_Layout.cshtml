@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SyncSpender</title>
 
-  
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    @*<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/29.1.33/material.css" />*@
     <link href="https://cdn.syncfusion.com/ej2/29.1.33/tailwind-dark.css" rel="stylesheet" />
-   
     <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SyncSpender.styles.css" asp-append-version="true" />
     <script src="https://cdn.syncfusion.com/ej2/29.1.33/dist/ej2.min.js"></script>
-    
 </head>
 <body class="e-bigger">
+    <!-- Sidebar -->
+    <partial name="_Sidebar" />
 
+    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SyncSpender</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav d-lg-flex">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -41,43 +40,48 @@
             </div>
         </nav>
     </header>
-    <div class="container mt-5">
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-10">
-                <main role="main" class="pb-3">
-                    <div class="col-md-7">
-                        <div class="d-flex flex-column mb-5">
-                            <div class="d-flex mb-1">
-                                <div class="flex-grow-1">
-                                <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
-                                </div>
-                                <div>
-                                    @if (ViewData["PageActionText"] != null)
-                                    {
-                                        <a class="btn btn-outline-info " href="@ViewData["PageActionUrl"]">
-                                            @ViewData["PageActionText"]
-                                        </a>
-                                    }
+                <div class="@(ViewData["isDashboard"] == null ? "col-md-10" : "col-md-12")">
+                    <main role="main" class="pb-2">
+                        @if (ViewData["isDashboard"] == null)
+                        {
+                            <div class="col-md-6">
+                                <div class="d-flex flex-column mb-sm-1">
+                                    <div class="d-flex mb-1">
+                                        <div class="flex-sm-grow-1">
+                                            <h4 class="fw-bold">@ViewData["PageTitle"]</h4>
+                                        </div>
+                                        <div>
+                                            @if (ViewData["PageActionText"] != null)
+                                            {
+                                                <a class="btn btn-outline-info" href="@ViewData["PageActionUrl"]">
+                                                    @ViewData["PageActionText"]
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <ejs-breadcrumb id="breadcrumb"
+                                                    separatorTemplate="@Html.Raw("<span style='padding: 0 8px;'>›</span>")">
+                                    </ejs-breadcrumb>
                                 </div>
                             </div>
-                            <ejs-breadcrumb id="breadcrumb"
-                                            separatorTemplate="@Html.Raw("<span style='padding: 0 8px;'>›</span>")">
-                            </ejs-breadcrumb>
-                        </div>
-                    </div>
-                    @RenderBody()
-                </main>
+                        }
+                        @RenderBody()
+                    </main>
                 </div>
             </div>
-       
+        </div>
     </div>
 
-   
+    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <ejs-scripts></ejs-scripts>
-
 </body>
 </html>

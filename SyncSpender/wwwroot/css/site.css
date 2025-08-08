@@ -1,105 +1,294 @@
 html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
+    font-size: 14px;
     position: relative;
     min-height: 100%;
     font-family: "Libertinus Serif", serif;
 }
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #C7C8D9; /* Soft lavender background */
+    color: #2D336B; /* Deep blue text */
+}
+
 *:not(.fa-solid):not(.fa):not(.e-icons) {
     font-family: "Libertinus Serif", serif;
 }
 
-body {
-  margin-bottom: 60px;
-  background-color: #12161d;
-  color :darkgray
+/* Button Focus */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #C7C8D9;
 }
-.e-bigger {
-    font-size: medium;
+
+.btn:focus,
+.btn:active {
+    color: #2D336B;
+    outline: none !important;
+    box-shadow: none;
 }
-/*BreadCrumb*/
-.e-breadcrumb a, .e-breadcrumb .e-hover {
-    text-decoration: none !important;
-    color: inherit;
-    !important;
-    box-shadow:none;
-    outline:none !important;
+
+/* Bootstrap-style Home Button */
+.btn-outline-primary {
+    border-color: #2D336B;
+    color: #2D336B;
+    font-family: "Libertinus Serif", serif;
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    text-decoration: none;
 }
-/*Button*/
-.btn:focus, .btn:active{
-    outline:none !important;
-    box-shadow:none;
-    
+
+    .btn-outline-primary:hover {
+        background-color: #2D336B;
+        color: #FFF2F2;
+    }
+
+/* Breadcrumb */
+.e-breadcrumb {
+    background-color: transparent;
+    font-family: "Libertinus Serif", serif;
+    font-size: 1rem;
 }
-/*HyperLink*/
-.no-a-decoration, .no-a-decoration:hover{
-    text-decoration:none;
-    color:white;
+
+    .e-breadcrumb .e-breadcrumb-item,
+    .e-breadcrumb .e-breadcrumb-item a,
+    .e-breadcrumb .e-breadcrumb-item span,
+    .e-breadcrumb .e-breadcrumb-item.e-active,
+    .e-breadcrumb .e-breadcrumb-item.e-hover,
+    .e-breadcrumb .e-breadcrumb-item.e-hover a,
+    .e-breadcrumb .e-breadcrumb-separator {
+        color: #2D336B !important;
+        text-decoration: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        background: none !important;
+        border: none !important;
+        font-weight: normal;
+    }
+
+    .e-breadcrumb .e-icons.e-home {
+        margin-right: 4px;
+        color: #2D336B;
+        font-size: 1rem;
+    }
+
+    .e-breadcrumb .e-breadcrumb-separator {
+        margin: 0 8px;
+        font-weight: bold;
+    }
+
+    .e-breadcrumb .e-breadcrumb-item:last-child {
+        color: #2D336B !important;
+        font-weight: 600;
+    }
+
+/* Hyperlink */
+.no-a-decoration,
+.no-a-decoration:hover {
+    color: #2D336B;
+    text-decoration: none;
 }
-/*Grid*/
+
+/* Grid */
 .e-grid {
-    border: 0 ;
-    border-radius:5px;
+    border: 0;
+    border-radius: 5px;
 }
+
     .e-grid .e-headercell {
-        color: #ffffff;
-        background-color: #1a222b;
+        color: #FFF2F2;
+        background-color: #2D336B;
     }
-    .e.grid e.gridheader{
-        border:5px;
-        border-top-left-radius:5px;
-        border-top-right-radius:5px;
-        padding:10px;
-        background-color:darkgray;
-    }
-    .e-grid e.gridcontent, .e-grid .e-table{
-        background-color: #12161d;
-        
-    }
-/*Radio button Group*/
+
+.e.grid e.gridheader {
+    border: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+    background-color: #2D336B;
+}
+
+.e-grid e.gridcontent,
+.e-grid .e-table {
+    background-color: #7A85C1;
+    color: #2D336B;
+}
+
+/* Grid Footer Styling */
+.e-grid .e-summarycell,
+.e-grid .e-footercontent td,
+.e-grid .e-footercontent .e-rowcell {
+    background-color: #2D336B !important;
+    color: #FFF2F2 !important;
+    font-family: "Libertinus Serif", serif;
+    font-weight: 500;
+    border-top: 1px solid #1a222b;
+    padding: 10px;
+    font-size: 0.95rem;
+}
+
+/* Radio Button Group */
 .e-btn-group.custom-rbt-group {
     width: 100%;
-   
 }
-.e-btn-group.custom-rbt-group .e-btn {
-    flex:1;
-    text-align:center;
+
+    .e-btn-group.custom-rbt-group .e-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+.custom-rbt-group label.e-btn {
+    box-shadow: none !important;
+    border: 1px solid #7886C7;
+    background-color: #7886C7;
+    color: white;
 }
-.custom-rbt-group label.e-btn{
-    box-shadow:none !important;
-    border:1px solid #0094ff;
-    background-color:#12161d;
-    color:white;
-}
-.e-btn-group.custom-rbt-group input:checked+label.e-btn {
-    background-color: #0094ff;
-    color:#000000;
+
+.e-btn-group.custom-rbt-group input:checked + label.e-btn {
+    background-color: #2D336B;
+    color: #FFF2F2;
     border: 1px solid #258cfb;
 }
-/*Widget*/
-.widget {
-    
-    border-radius: 2rem;
-    background-color:#1a222b;
+
+/* Pagination */
+.e-grid .e-pager {
+    background-color: #2D336B !important;
+    color: #FFF2F2 !important;
+    font-family: "Libertinus Serif", serif;
+    border-top: 1px solid #1a222b;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: #808080;
-  text-align: end;
+    .e-grid .e-pager .e-numericitem,
+    .e-grid .e-pager .e-next,
+    .e-grid .e-pager .e-prev,
+    .e-grid .e-pager .e-first,
+    .e-grid .e-pager .e-last {
+        color: #FFF2F2 !important;
+        background-color: #2D336B !important;
+        border: none !important;
+        font-size: 14px;
+    }
+
+    .e-grid .e-pager .e-currentitem {
+        background-color: #7886C7 !important;
+        color: #FFF2F2 !important;
+        font-weight: bold;
+        border-radius: 4px;
+        padding: 4px 8px;
+    }
+
+    .e-grid .e-pager .e-numericitem:hover,
+    .e-grid .e-pager .e-next:hover,
+    .e-grid .e-pager .e-prev:hover,
+    .e-grid .e-pager .e-first:hover,
+    .e-grid .e-pager .e-last:hover {
+        background-color: #2D336B !important;
+        cursor: pointer;
+    }
+
+/* Sidebar */
+#Sidebar {
+    background-color: #A9B5DF;
+    border-right: 1px dashed rgba(26, 34, 43, 0.5);
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    padding: 5px 10px;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Main Content */
+.main-content {
+    margin-left: 200px;
+    padding: 0 px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    #Sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 0 px;
+    }
+}
+
+/* Widget Styling */
+.widget.summary > div:first-child i {
+    font-weight: bold;
+}
+
+.widget.income > div:first-child {
+    color: #ff6a00;
+}
+
+.widget.expense > div:first-child,
+.widget.balance > div:first-child {
+    color: #0094ff;
+}
+
+.widget.summary.income {
+    background-color: #DFF5E1;
+}
+
+.widget.summary.expense {
+    background-color: #FDE2E4;
+}
+
+.widget.summary.balance {
+    background-color: #E2EAFD;
+}
+
+/* Widget Hover Effect */
+.widget.summary {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+    .widget.summary:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(45, 51, 107, 0.2);
+    }
+
+/* Form Placeholder */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: #2D336B;
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    color: #2D336B;
+    text-align: start;
+}
+
+/* DatePicker Floating Label */
+.e-control-wrapper .e-float-text {
+    color: #2D336B !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    font-family: "Libertinus Serif", serif !important;
+}
+
+/* Bigger Elements */
+.e-bigger {
+    font-size: inherit;
+    background-color: #A9B5DF;
+    color: #2D336B;
 }

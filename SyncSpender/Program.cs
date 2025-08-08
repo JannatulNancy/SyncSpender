@@ -21,7 +21,7 @@ namespace SyncSpender
             builder.Services.AddControllersWithViews();
 
             //Register Syncfusion license
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JEaF5cWWFCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXdednZXQ2JZUEdxV0JWYEk=");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JEaF5cXmRCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXded3ZWQmZZV0B2WEZWYEk=");
 
 
             var app = builder.Build();
@@ -44,7 +44,7 @@ namespace SyncSpender
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Dashboard}/{action=Index}/{id?}")
                 .WithStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();

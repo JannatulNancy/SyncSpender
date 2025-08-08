@@ -6,8 +6,9 @@
     ViewData["PageActionText"] = "Add Category";
     ViewData["PageActionUrl"] = Url.Action("AddOrEdit", "Category");
 }
+
 <div class="row">
-    <div class=" col-md-9  align-items-center">
+    <div class=" col-md-12  align-items-center">
         <ejs-grid id="categories" dataSource="@Model" gridLines="None"
         allowSorting="true" allowPaging="true">
         <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
@@ -20,7 +21,7 @@
 
         </ejs-grid>
         <div class="col-md-5">
-            <div class="widget h-100 d-flex justify-center align-items-center" style="background-color:#212b36">
+            <div class="widget h-100 d-flex justify-center align-items-center" style="background-color:lightblue">
                 <i class="fa-solid fa-shapes fa-2xl"></i>
             </div>
         </div>
@@ -38,13 +39,13 @@
          <div class="d-flex flex-row justify-content-start">
             <a class="btn btn-sm .no-a-decoration" href="/Category/AddOrEdit/${CategoryId}">
 
-            <i class="bi bi-pencil" style="color:lightsteelblue"></i>
+           <i class="bi bi-pencil" style="color:#2D336B"></i>
                  </a>
                 <form action="/Category/Delete/${CategoryId}" method="post">
                    @Html.AntiForgeryToken()
                     <button type="submit" class="btn btn-sm .no-a-decoration"
                        onclick="return confirm (&quot;Are you sure to delete this record?&quot)">
-                        <i class="bi bi-trash" style="color:orangered"></i>
+                        <i class="bi bi-trash" style="color:red"></i>
                    </button>
                    </form>
                  </div>
