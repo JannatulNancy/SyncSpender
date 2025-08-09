@@ -60,9 +60,46 @@ namespace SyncSpender.Controllers
                     formattedAmount = k.Sum(j => j.Amount).ToString("C0"),
                 }
                 )
+                .OrderByDescending(l => l.amount)
                 .ToList();
+
+            //Spline Chart - Income & Expense
+            //Income
+            List<SplineChartData> SplineChartData = SelectedTransactions
+                .GroupBy(i => i.Date.Date)
+                .Select(j => new SplineChartData
+                {
+                    day = j.Key.ToString("dd MMM"),
+                    income = (int)j.Where(k => k.Category.Type == "Income").Sum(l => l.Amount),
+                    expense = (int)j.Where(k => k.Category.Type == "Expense").Sum(l => l.Amount)
+                })
+                .ToList();
+
+            //Combine Income & Expense
+            string[] Last7Days = Enumerable.Range(0, 7)
+                .Select(i => StartDate.AddDays(i).ToString("dd MMM"))
+                .ToArray();
+            ViewBag.SplineChartData = from day in Last7Days
+                                      join income in SplineChartData on day equals income.day
+                                      into dayIncomeJoined
+                                      from income in dayIncomeJoined.DefaultIfEmpty()
+                                      join expense in SplineChartData on day equals expense.day
+                                      into dayExpenseJoined
+                                      from expense in dayExpenseJoined.DefaultIfEmpty()
+                                      select new
+                                      {
+                                          day = day,
+                                          income = income == null ? 0 : income.income,
+                                          expense = expense == null ? 0 : expense.expense
+                                      };
 
             return View();
         }
+    }
+       public class SplineChartData
+       {
+           public string day { get; set; }
+           public int income { get; set; }
+           public int expense { get; set; }
     }
 }
