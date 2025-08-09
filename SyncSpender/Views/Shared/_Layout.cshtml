@@ -18,28 +18,29 @@
     <partial name="_Sidebar" />
 
     <!-- Header -->
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SyncSpender</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav d-lg-flex">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="~/android-chrome-512x512.png" alt="Logo" width="50" />
+                <span class="app-name">SyncSpender</span>
+                <style>
+                    .header {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .app-name {
+                        font-family: 'Libertinus Serif', serif;
+                        font-weight: bold;
+                        color: #2D336B;
+                        font-size: 1.5rem;
+                        padding-left: 10px;
+                    }
+                </style> 
+            </a>
+        </div>
+    </nav>
+    
 
     <!-- Main Content -->
     <div class="main-content">

@@ -10,11 +10,30 @@ html {
         font-size: 16px;
     }
 }
+/* Custom class for navbar */
+.navbar-custom {
+    background-color: #e6f0fa !important;
+    border-bottom: 1px solid transparent;
+    background-image: linear-gradient(to right, #cdddee, #e0eaf5);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none;
+}
+    /* Optional: Text color */
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+        color: #1a2b4c;
+    }
+
 
 body {
     margin-bottom: 60px;
     background-color: #C7C8D9; /* Soft lavender background */
     color: #2D336B; /* Deep blue text */
+    margin: 0;
+    padding: 0;
 }
 
 *:not(.fa-solid):not(.fa):not(.e-icons) {
