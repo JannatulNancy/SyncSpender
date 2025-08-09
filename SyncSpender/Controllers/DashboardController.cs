@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SyncSpender.Data;
 using SyncSpender.Models;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Transactions;
 using Transaction = SyncSpender.Models.Transaction;
@@ -11,7 +12,7 @@ namespace SyncSpender.Controllers
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public DashboardController(ApplicationDbContext context ) 
+        public DashboardController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,25 +25,42 @@ namespace SyncSpender.Controllers
 
             List<Transaction> SelectedTransactions = await _context.Transactions
                 .Include(x => x.Category)
-                .Where(y => y.Date>=StartDate && y.Date<=EndDate) 
+                .Where(y => y.Date >= StartDate && y.Date <= EndDate)
                 .ToListAsync();
 
             //Total Income
             int TotalIncome = (int)SelectedTransactions
                 .Where(i => i.Category.Type == "Income")
                 .Sum(j => j.Amount);
-            ViewBag.TotalIncome = TotalIncome.ToString("C0");
-
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-BD");
+            culture.NumberFormat.CurrencyNegativePattern = 1;
+            ViewBag.TotalIncome = String.Format(culture, "{0:C0}", TotalIncome);
             //Total Expense
             int TotalExpense = (int)SelectedTransactions
                 .Where(i => i.Category.Type == "Expense")
                 .Sum(j => j.Amount);
-            ViewBag.TotalExpense = TotalExpense.ToString("C0");
+            CultureInfo culture2 = CultureInfo.CreateSpecificCulture("en-BD");
+            culture.NumberFormat.CurrencyNegativePattern = 1;
+            ViewBag.TotalExpense = String.Format(culture, "{0:C0}", TotalExpense);
 
             //Balance
             int Balance = TotalIncome - TotalExpense;
-            ViewBag.Balance = Balance.ToString("C0"); 
+            CultureInfo culture3 = CultureInfo.CreateSpecificCulture("en-BD");
+            culture.NumberFormat.CurrencyNegativePattern = 1;
+            ViewBag.Balance = String.Format(culture,"{0:C0}", Balance);
 
+            //Doughnut Chart - Expense By Category
+            ViewBag.DoughnutChartData = SelectedTransactions
+                .Where(i => i.Category.Type == "Expense")
+                .GroupBy(j => j.Category.CategoryId)
+                .Select(k => new
+                {
+                    categoryTitleWithIcon = k.First().Category.Icon+ "" + k.First().Category.Title,
+                    amount = k.Sum(j => j.Amount),
+                    formattedAmount = k.Sum(j => j.Amount).ToString("C0"),
+                }
+                )
+                .ToList();
 
             return View();
         }

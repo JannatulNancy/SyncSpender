@@ -210,8 +210,8 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 200px;
-    padding: 0 px;
+    margin-left: 175px;
+    padding: 0px;
 }
 
 /* Responsive Layout */
@@ -264,7 +264,10 @@ body {
         transform: scale(1.02);
         box-shadow: 0 4px 12px rgba(45, 51, 107, 0.2);
     }
-
+.widget.chart {
+    
+    padding: 5px;
+}
 /* Form Placeholder */
 .form-floating > .form-control-plaintext::placeholder,
 .form-floating > .form-control::placeholder {
