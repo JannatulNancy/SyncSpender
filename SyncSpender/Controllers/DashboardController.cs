@@ -92,7 +92,11 @@ namespace SyncSpender.Controllers
                                           income = income == null ? 0 : income.income,
                                           expense = expense == null ? 0 : expense.expense
                                       };
-
+            //Recent Transactions
+            ViewBag.RecentTransactions = SelectedTransactions
+                .OrderByDescending(i => i.Date)
+                .Take(5)
+                .ToList();
             return View();
         }
     }
