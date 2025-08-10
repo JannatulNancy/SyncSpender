@@ -2,7 +2,72 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-}
-<ejs-sidebar id ="sidebar" width="250px"> 
+    List<Object> menu = new List<Object>();
+    menu.Add(new
+    {
+        text = "General",
+        IconCss = "e-icons e-home",
+        separator = true,
+    });
+    menu.Add(new
+    {
+        text = "Dashboard",
+        IconCss = "e-icons e-dashboard",
+        url="/Dashboard",
+    });
+    menu.Add(new
+    {
+        text = "Categories",
+        IconCss = "e-icons e-categories",
+        url = "/Category",
+    });
 
+    menu.Add(new
+    {
+        text = "Transactions",
+        IconCss = "e-icons e-transaction",
+        url="/Transaction",
+    });
+
+    menu.Add(new
+    {
+        text = "Extra",
+        IconCss = "e-icons e-home",
+        separator = true,
+    });
+    menu.Add(new
+    {
+        text = "Reports",
+        IconCss = "e-icons e-reports",
+        url="#",
+    });
+    menu.Add(new
+    {
+        text = "Settings",
+        IconCss = "e-icons e-settings",
+        url = "#",
+    });
+  
+
+}
+<ejs-sidebar id ="sidebar" width="250px" enableDock dockSize="250px" target=".dock-target" enableGestures="false"> 
+    <e-content-template>
+        <div class="profile-wrapper">
+            <img id ="sidebar-toggler" class="profile-pic" src="~/506452073_1019148173726973_582264661279165484_n.jpg" />
+            <div class=" titles d-flex flex-column ps-3">
+                <h6 class=" mb-0"> Alina Rahman </h6>
+               
+            </div>
+        </div>
+        <ejs-menu id="menu" items="menu"
+        orientation="Vertical  "></ejs-menu>
+    </e-content-template>
 </ejs-sidebar>
+<script>
+    document.addEventListener('DOMContentLoaded',function (){
+        dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick=function(){
+            dockBar.toggle();
+        };
+    });
+</script>
